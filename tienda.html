@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="firebase-app-check-site-key" content="">
+<title>Tienda | NoAn Beauty</title>
+<meta name="description" content="Explora maquillaje, perfumes, rosas y arreglos en NoAn Beauty.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { crema:'#f9f6f0', nude:'#f3ece1', oro:'#d4af37', rosaoro:'#b76e79', tinta:'#2c2c2c', rosa:'#f4d9d6' },
+    fontFamily: { serif:['"Cormorant Garamond"','serif'], script:['"Great Vibes"','cursive'], sans:['Poppins','sans-serif'] }
+  } }
+}
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+<header id="nav" class="fixed top-0 inset-x-0 z-50 scrolled transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+    <a href="index.html#inicio" class="flex items-center gap-2" aria-label="NoAn Beauty, inicio">
+      <span class="font-serif text-2xl font-bold tracking-wide">NoAn <span class="font-script text-3xl gold-text font-normal">Beauty</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm" aria-label="Principal">
+      <a class="hover:text-rosaoro transition" href="index.html#inicio">Inicio</a>
+      <a class="hover:text-rosaoro transition" href="tienda.html" aria-current="page">Tienda</a>
+      <a class="hover:text-rosaoro transition" href="index.html#servicios">Servicios</a>
+      <a class="hover:text-rosaoro transition" href="index.html#contacto">Contacto</a>
+    </nav>
+    <button type="button" data-theme-toggle class="btn btn-line !py-2 !px-3 text-xs" aria-label="Cambiar tema"></button>
+    <button id="menuBtn" class="lg:hidden p-2" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-crema/95 backdrop-blur border-t border-oro/30 px-5 pb-6">
+    <nav class="flex flex-col gap-4 pt-4 text-base" aria-label="Móvil">
+      <a href="index.html#inicio">Inicio</a>
+      <a href="tienda.html" aria-current="page" class="btn btn-line w-full">Tienda de productos</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#contacto">Contacto</a>
+      <button type="button" data-theme-toggle class="btn btn-line w-full">Cambiar tema</button>
+    </nav>
+  </div>
+</header>
+
+<main class="flex-1 pt-28 pb-20 bg-nude">
+  <section class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <div class="divider"><span aria-hidden="true">✦</span></div>
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold mt-4">Tienda de productos</h1>
+      <p class="mt-4 text-tinta/70 max-w-xl mx-auto">Explora maquillaje, perfumes y detalles para cada ocasión.</p>
+      <a href="#carrito" class="btn btn-gold mt-6">Mi carrito <span id="cartCount" class="ml-2">0</span></a>
+    </div>
+    <div class="gold-card rounded-3xl p-5 sm:p-7 mt-10 reveal">
+      <div class="grid sm:grid-cols-2 gap-5">
+        <div>
+          <label for="categoryFilter" class="text-sm font-medium block mb-1.5">Filtrar por categoría</label>
+          <select id="categoryFilter" aria-label="Filtrar productos por categoría">
+            <option value="all">Todas las categorías</option>
+            <option value="Maquillaje">Maquillaje</option>
+            <option value="Perfumes">Perfumes</option>
+            <option value="Rosas y arreglos">Rosas y arreglos</option>
+          </select>
+        </div>
+        <div>
+          <label for="productSort" class="text-sm font-medium block mb-1.5">Ordenar productos</label>
+          <select id="productSort" aria-label="Ordenar productos">
+            <option value="newest">Más recientes</option>
+            <option value="price-asc">Precio: de menor a mayor</option>
+            <option value="alphabetical">Alfabéticamente: A-Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <p id="catalogMsg" role="status" aria-live="polite" class="mt-6 text-center text-sm text-tinta/70">Cargando catálogo...</p>
+    <div id="productGrid" class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"></div>
+  </section>
+  <section id="carrito" class="max-w-5xl mx-auto px-5 lg:px-8 mt-20">
+    <div class="text-center reveal">
+      <div class="divider"><span aria-hidden="true">✦</span></div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-4">Tu pedido</h2>
+      <p class="mt-4 text-tinta/70">Agrega productos, completa la dirección y prepara tu comprobante.</p>
+    </div>
+    <div id="cartPanel" class="gold-card rounded-3xl p-5 sm:p-8 mt-8">
+      <p id="cartMsg" role="status" aria-live="polite" class="text-center text-tinta/70">Tu carrito está vacío.</p>
+      <div id="cartItems" class="divide-y divide-oro/20"></div>
+      <p id="cartTotal" class="text-right text-xl font-medium text-rosaoro mt-5"></p>
+      <form id="checkoutForm" class="hidden mt-8 grid sm:grid-cols-2 gap-5">
+        <h3 class="sm:col-span-2 font-serif text-3xl">Datos para la entrega</h3>
+        <div>
+          <label for="customerName" class="text-sm font-medium block mb-1.5">Nombre completo</label>
+          <input id="customerName" name="nombre" type="text" maxlength="120" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="customerPhone" class="text-sm font-medium block mb-1.5">Teléfono de contacto</label>
+          <input id="customerPhone" name="telefono" type="tel" maxlength="30" autocomplete="tel" required>
+        </div>
+        <div>
+          <label for="customerCity" class="text-sm font-medium block mb-1.5">Ciudad o municipio</label>
+          <input id="customerCity" name="ciudad" type="text" maxlength="100" autocomplete="address-level2" required>
+        </div>
+        <div>
+          <label for="customerAddress" class="text-sm font-medium block mb-1.5">Dirección de entrega</label>
+          <input id="customerAddress" name="direccion" type="text" maxlength="180" autocomplete="street-address" placeholder="Calle, carrera, número y barrio" required>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="deliveryNotes" class="text-sm font-medium block mb-1.5">Indicaciones para la entrega (opcional)</label>
+          <textarea id="deliveryNotes" name="indicaciones" rows="2" maxlength="300" placeholder="Apartamento, portería u otra referencia"></textarea>
+        </div>
+        <fieldset class="sm:col-span-2">
+          <legend class="text-sm font-medium mb-3">Elige cómo pagar</legend>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <label class="payment-option"><input type="radio" name="metodoPago" value="Nequi" required><span>Nequi</span></label>
+            <label class="payment-option"><input type="radio" name="metodoPago" value="Bancolombia"><span>Bancolombia</span></label>
+            <label class="payment-option"><input type="radio" name="metodoPago" value="Daviplata"><span>Daviplata</span></label>
+          </div>
+          <p class="mt-3 text-sm text-tinta/75">Número para el pago en cualquiera de las opciones: <strong class="text-tinta">320 582 5656</strong></p>
+        </fieldset>
+        <p class="sm:col-span-2 text-sm text-tinta/70">El envío puede tener un costo adicional. Te lo confirmaremos al coordinar la entrega por WhatsApp.</p>
+        <button id="prepareOrder" type="submit" class="btn btn-gold sm:col-span-2 w-full">Preparar pedido y comprobante</button>
+        <p id="orderStatus" class="sm:col-span-2 text-center text-sm text-rosaoro" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <section id="receipt" class="hidden invoice-card gold-card rounded-3xl mt-8 overflow-hidden" aria-labelledby="receiptTitle">
+      <div class="invoice-banner p-6 sm:p-10">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6">
+          <div>
+            <p class="text-xs uppercase tracking-[.3em] text-rosaoro">NoAn Beauty</p>
+            <p class="font-script text-4xl sm:text-5xl gold-text mt-1">Belleza en cada detalle</p>
+          </div>
+          <div class="sm:text-right">
+            <p class="text-xs uppercase tracking-widest text-rosaoro">Comprobante de compra</p>
+            <h2 id="receiptTitle" class="font-serif text-3xl sm:text-4xl mt-1">Factura de pedido</h2>
+            <p id="receiptOrderNumber" class="mt-2 text-sm text-tinta/70"></p>
+            <p class="mt-3 inline-block rounded-full bg-rosa px-4 py-1 text-sm">Pendiente de verificar el pago</p>
+          </div>
+        </div>
+      </div>
+      <div class="p-6 sm:p-10">
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-4 py-6 text-sm border-y border-oro/30">
+          <p><strong>Cliente:</strong> <span id="receiptName"></span></p>
+          <p><strong>Teléfono:</strong> <span id="receiptPhone"></span></p>
+          <p class="sm:col-span-2"><strong>Dirección de entrega:</strong> <span id="receiptAddress"></span></p>
+          <p id="receiptNotesRow" class="sm:col-span-2 hidden"><strong>Indicaciones:</strong> <span id="receiptNotes"></span></p>
+          <p><strong>Método de pago:</strong> <span id="receiptPayment"></span></p>
+          <p><strong>Número para pagar:</strong> 320 582 5656</p>
+        </div>
+        <div class="overflow-x-auto mt-6">
+          <table class="w-full text-sm text-left">
+            <thead><tr class="invoice-table-head border-b border-oro/40"><th class="py-3 pr-3">Producto</th><th class="py-3 px-3 text-center">Cant.</th><th class="py-3 px-3 text-right">Precio</th><th class="py-3 pl-3 text-right">Subtotal</th></tr></thead>
+            <tbody id="receiptItems"></tbody>
+          </table>
+        </div>
+        <div class="invoice-total mt-6 ml-auto max-w-sm rounded-2xl p-5 text-right">
+          <p class="text-xs uppercase tracking-widest text-tinta/65">Total de productos</p>
+          <p id="receiptTotal" class="font-serif text-2xl sm:text-3xl font-semibold text-rosaoro mt-1"></p>
+        </div>
+        <p class="mt-6 text-sm leading-relaxed text-tinta/75">El domicilio se cotiza por separado. Toma una captura de este comprobante y otra del pago realizado en tu aplicación. Envíalas manualmente por WhatsApp al <strong class="text-tinta">+57 320 582 5656</strong>. El pedido se confirma cuando verifiquemos el pago. Este documento es un comprobante de pedido, no una factura electrónica DIAN.</p>
+        <div class="invoice-actions flex flex-col sm:flex-row gap-3 mt-8">
+          <button id="downloadReceipt" type="button" class="btn btn-gold flex-1">Descargar comprobante en PDF</button>
+          <button id="editOrder" type="button" class="btn btn-line flex-1">Volver a editar el pedido</button>
+        </div>
+        <p id="pdfStatus" class="invoice-actions mt-3 text-center text-sm text-tinta/70" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </section>
+</main>
+
+<footer class="bg-tinta text-crema/70 py-6 text-center text-sm">
+  © <span id="year"></span> NoAn Beauty. Todos los derechos reservados.
+</footer>
+<script type="module" src="tienda.js"></script>
+</body>
+</html>

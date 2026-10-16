@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NoAn Beauty | Tu belleza, en un solo lugar</title>
+<meta name="description" content="Maquillaje, skincare y perfumería en NoAn Beauty. Tu belleza, en un solo lugar.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    colors: { crema:'#f9f6f0', nude:'#f3ece1', oro:'#d4af37', rosaoro:'#b76e79', tinta:'#2c2c2c', rosa:'#f4d9d6' },
+    fontFamily: { serif:['"Cormorant Garamond"','serif'], script:['"Great Vibes"','cursive'], sans:['Poppins','sans-serif'] }
+  } }
+}
+</script>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans antialiased">
+
+<!-- Iconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2.1 0 3.9 1.2 5.7 3.4 1.8-2.2 3.6-3.4 5.7-3.4 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="crown" viewBox="0 0 64 40"><path d="M6 34 2 10l15 12L32 4l15 18L62 10l-4 24z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><circle cx="32" cy="4" r="2.6" fill="currentColor"/><circle cx="2" cy="10" r="2.2" fill="currentColor"/><circle cx="62" cy="10" r="2.2" fill="currentColor"/><path d="M8 38h48" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- NAVBAR -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#inicio" class="flex items-center gap-2" aria-label="NoAn Beauty, inicio">
+      <svg class="w-7 h-5 text-oro" aria-hidden="true"><use href="#crown"/></svg>
+      <span class="font-serif text-2xl font-bold tracking-wide">NoAn <span class="font-script text-3xl gold-text font-normal">Beauty</span></span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm" aria-label="Principal">
+      <a class="hover:text-rosaoro transition" href="#inicio">Inicio</a>
+      <a class="hover:text-rosaoro transition" href="#servicios">Servicios</a>
+      <a class="hover:text-rosaoro transition" href="#nosotros">Sobre Nosotros</a>
+      <a class="hover:text-rosaoro transition" href="tienda.html">Tienda</a>
+      <a class="hover:text-rosaoro transition" href="#testimonios">Testimonios</a>
+      <a class="hover:text-rosaoro transition" href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn btn-gold hidden lg:inline-flex text-sm !py-2.5">Reservar Cita</a>
+    <button type="button" data-theme-toggle class="btn btn-line !py-2 !px-3 text-xs" aria-label="Cambiar tema"></button>
+    <button id="menuBtn" class="lg:hidden p-2" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden lg:hidden bg-crema/95 backdrop-blur border-t border-oro/30 px-5 pb-6">
+    <nav class="flex flex-col gap-4 pt-4 text-base" aria-label="Móvil">
+      <a href="#inicio">Inicio</a><a href="#servicios">Servicios</a><a href="#nosotros">Sobre Nosotros</a>
+      <a href="tienda.html" class="btn btn-line w-full">Tienda de productos</a><a href="#testimonios">Testimonios</a><a href="#contacto">Contacto</a>
+      <a href="#contacto" class="btn btn-gold mt-2">Reservar Cita</a>
+      <button type="button" data-theme-toggle class="btn btn-line w-full">Cambiar tema</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="inicio" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden" style="background:radial-gradient(ellipse at 70% 30%,#f4d9d6 0%,transparent 55%),radial-gradient(ellipse at 10% 90%,#efe0c6 0%,transparent 50%),#f9f6f0">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-12 items-center w-full">
+    <div class="text-center lg:text-left order-2 lg:order-1">
+      <p class="text-rosaoro tracking-widest text-sm mb-4">Maquillaje · Skincare · Perfumería</p>
+      <h1 class="font-serif font-semibold text-5xl sm:text-6xl xl:text-7xl leading-[1.05]">Tu belleza,<br><span class="gold-text">en un solo lugar</span></h1>
+      <p class="mt-6 text-lg text-tinta/75 max-w-xl mx-auto lg:mx-0 leading-relaxed">Maquillaje que realza tu esencia, tratamientos de skincare que cuidan tu piel y fragancias exclusivas que te acompañan en cada momento. Todo con atención personalizada.</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        <a href="#servicios" class="btn btn-line">Ver Servicios</a>
+        <a href="#contacto" class="btn btn-gold">Reservar Ahora</a>
+      </div>
+    </div>
+    <!-- Emblema tipo logo -->
+    <div class="order-1 lg:order-2 flex justify-center">
+      <div class="relative w-[300px] h-[300px] sm:w-[420px] sm:h-[420px] float">
+        <div class="absolute inset-0 rounded-full ring" style="box-shadow:0 0 60px rgba(212,175,55,.35), inset 0 0 40px rgba(212,175,55,.15)"></div>
+        <div class="absolute inset-3 rounded-full" style="background:radial-gradient(circle at 35% 30%,#fffdf8,#f3ece1)"></div>
+        <svg class="absolute -top-3 left-3 sm:left-6 w-9 h-9 text-tinta" aria-hidden="true"><use href="#heart"/></svg>
+        <svg class="absolute top-10 right-0 w-7 h-7 text-rosaoro" aria-hidden="true"><use href="#heart"/></svg>
+        <svg class="absolute bottom-6 right-2 w-9 h-9 text-tinta" aria-hidden="true"><use href="#heart"/></svg>
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+          <svg class="w-16 sm:w-24 text-oro mb-1" aria-hidden="true"><use href="#crown"/></svg>
+          <div class="font-serif font-bold text-6xl sm:text-8xl leading-none">No<span class="gold-text">An</span></div>
+          <div class="font-script gold-text text-5xl sm:text-7xl -mt-1">Beauty</div>
+          <p class="text-[10px] sm:text-xs tracking-[.25em] mt-3 text-tinta/80">MAQUILLAJE <span class="text-rosaoro">♥</span> SKINCARE <span class="text-rosaoro">♥</span> PERFUMERÍA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-24 bg-nude">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="text-center reveal">
+      <div class="divider"><svg class="w-5 h-5" aria-hidden="true"><use href="#heart"/></svg></div>
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold mt-4">Nuestros servicios</h2>
+      <p class="mt-4 text-tinta/70 max-w-xl mx-auto">Tres mundos de belleza reunidos bajo un mismo techo.</p>
+    </div>
+    <div class="mt-14 grid md:grid-cols-3 gap-8">
+      <article class="gold-card rounded-3xl p-8 text-center reveal">
+        <div class="mx-auto w-20 h-20 rounded-full ring flex items-center justify-center text-rosaoro">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v6H9zM8 9h8v4H8zM7 13h10v8H7z"/></svg>
+        </div>
+        <h3 class="font-serif text-3xl mt-6">Maquillaje</h3>
+        <p class="mt-3 text-tinta/70 leading-relaxed">Maquillaje profesional y social para bodas, graduaciones, sesiones de fotos y cada ocasión especial.</p>
+        <a href="#contacto" data-servicio="Maquillaje" class="pick inline-block mt-5 text-rosaoro font-medium hover:underline">Agendar maquillaje</a>
+      </article>
+      <article class="gold-card rounded-3xl p-8 text-center reveal" style="transition-delay:.12s">
+        <div class="mx-auto w-20 h-20 rounded-full ring flex items-center justify-center text-rosaoro">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3 4 6 6.500 6 10a6 6 0 0 1-12 0c0-3.500 3-6 6-10z"/><path d="M9.500 14a2.500 2.500 0 0 0 2.500 2.500"/></svg>
+        </div>
+        <h3 class="font-serif text-3xl mt-6">Skincare</h3>
+        <p class="mt-3 text-tinta/70 leading-relaxed">Tratamientos faciales y cuidado de la piel: limpieza profunda, hidratación y rutinas a tu medida.</p>
+        <a href="#contacto" data-servicio="Skincare" class="pick inline-block mt-5 text-rosaoro font-medium hover:underline">Agendar tratamiento</a>
+      </article>
+      <article class="gold-card rounded-3xl p-8 text-center reveal" style="transition-delay:.24s">
+        <div class="mx-auto w-20 h-20 rounded-full ring flex items-center justify-center text-rosaoro">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v3h-4zM9 6h6v2H9z"/><rect x="5" y="8" width="14" height="13" rx="2"/><path d="M9 14h6"/></svg>
+        </div>
+        <h3 class="font-serif text-3xl mt-6">Perfumería</h3>
+        <p class="mt-3 text-tinta/70 leading-relaxed">Fragancias exclusivas seleccionadas con asesoría para encontrar el aroma que cuenta tu historia.</p>
+        <a href="#contacto" data-servicio="Perfumería" class="pick inline-block mt-5 text-rosaoro font-medium hover:underline">Pedir asesoría</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros" class="py-24">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal relative">
+      <div class="aspect-[4/5] rounded-[2rem] ring p-3">
+        <div class="w-full h-full rounded-[1.5rem] flex flex-col items-center justify-center text-center p-8" style="background:linear-gradient(160deg,#f4d9d6,#f3ece1 55%,#ecd9a8)">
+          <svg class="w-20 text-oro" aria-hidden="true"><use href="#crown"/></svg>
+          <p class="font-script text-5xl gold-text mt-4">Belleza con alma</p>
+          <p class="text-sm text-tinta/60 mt-4">Reemplaza este espacio con una foto de tu salón o equipo.</p>
+        </div>
+      </div>
+      <svg class="absolute -bottom-4 -right-2 w-12 h-12 text-rosaoro" aria-hidden="true"><use href="#heart"/></svg>
+    </div>
+    <div class="reveal">
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold">Sobre NoAn Beauty</h2>
+      <p class="mt-6 text-tinta/75 leading-relaxed text-lg">NoAn Beauty nació del deseo de que cada mujer encuentre en un mismo lugar todo lo que necesita para verse y sentirse increíble. Empezamos con una selección pequeña de maquillaje y fragancias, y hoy somos un espacio de belleza completo.</p>
+      <p class="mt-4 text-tinta/75 leading-relaxed text-lg">Creemos en la exclusividad sin frialdad: te escuchamos, te asesoramos y cuidamos cada detalle, desde el tono exacto de tu base hasta la forma en que se presenta tu perfume.</p>
+      <ul class="mt-8 grid sm:grid-cols-3 gap-5">
+        <li class="flex gap-3 items-start"><svg class="w-6 h-6 shrink-0 text-rosaoro" aria-hidden="true"><use href="#heart"/></svg><span><b class="block font-serif text-xl">Exclusividad</b><span class="text-sm text-tinta/65">Marcas y fragancias elegidas con criterio.</span></span></li>
+        <li class="flex gap-3 items-start"><svg class="w-6 h-6 shrink-0 text-rosaoro" aria-hidden="true"><use href="#heart"/></svg><span><b class="block font-serif text-xl">Atención personal</b><span class="text-sm text-tinta/65">Cada clienta recibe asesoría a su medida.</span></span></li>
+        <li class="flex gap-3 items-start"><svg class="w-6 h-6 shrink-0 text-rosaoro" aria-hidden="true"><use href="#heart"/></svg><span><b class="block font-serif text-xl">Cuidado del detalle</b><span class="text-sm text-tinta/65">Del servicio al empaque, todo importa.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO / RESERVA -->
+<section id="contacto" class="py-24 bg-nude">
+  <div class="max-w-6xl mx-auto px-5 lg:px-8 grid lg:grid-cols-5 gap-12 items-start">
+    <div class="lg:col-span-2 reveal">
+      <h2 class="font-serif text-4xl sm:text-5xl font-semibold">Reserva tu cita</h2>
+      <p class="mt-5 text-tinta/75 leading-relaxed text-lg">Cuéntanos qué te gustaría y te confirmamos tu horario por teléfono o WhatsApp.</p>
+      <ul class="mt-8 space-y-3 text-tinta/80">
+        <li>📍 Calle 10 #25-30, Local 4 (Cerca de la Heladera)</li>
+        <li>📞 +57  320 5825656
+</li>
+        <li>✉️ noanbeautifull@gmail.com</li>
+      </ul>
+    </div>
+    <form id="bookingForm" class="lg:col-span-3 gold-card rounded-3xl p-7 sm:p-10 grid sm:grid-cols-2 gap-5 reveal" novalidate>
+      <div class="sm:col-span-2"><label for="nombre" class="text-sm font-medium block mb-1.5">Nombre</label><input id="nombre" name="nombre" type="text" placeholder="Tu nombre completo" required autocomplete="name"></div>
+      <div><label for="telefono" class="text-sm font-medium block mb-1.5">Teléfono</label><input id="telefono" name="telefono" type="tel" placeholder="300 000 0000" required autocomplete="tel"></div>
+      <div><label for="fecha" class="text-sm font-medium block mb-1.5">Fecha preferida</label><input id="fecha" name="fecha" type="date" required></div>
+      <div class="sm:col-span-2"><label for="servicio" class="text-sm font-medium block mb-1.5">Servicio de interés</label>
+        <select id="servicio" name="servicio" required>
+          <option value="">Elige un servicio</option>
+          <option>Maquillaje</option><option>Skincare</option><option>Perfumería</option>
+        </select></div>
+      <div class="sm:col-span-2"><label for="mensaje" class="text-sm font-medium block mb-1.5">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos más sobre lo que buscas"></textarea></div>
+      <div class="sm:col-span-2">
+        <button type="submit" class="btn btn-gold w-full">Enviar solicitud de cita</button>
+        <p id="formMsg" role="status" class="mt-4 text-center text-sm min-h-[1.25rem]"></p>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-tinta text-crema/85 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 grid md:grid-cols-3 gap-10">
+    <div>
+      <div class="flex items-center gap-2"><svg class="w-7 h-5 text-oro" aria-hidden="true"><use href="#crown"/></svg><span class="font-serif text-2xl text-white">NoAn <span class="font-script text-3xl text-oro font-normal">Beauty</span></span></div>
+      <p class="mt-4 text-sm text-crema/65">Tu belleza, en un solo lugar.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-oro/50 flex items-center justify-center hover:bg-oro hover:text-tinta transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-oro/50 flex items-center justify-center hover:bg-oro hover:text-tinta transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+        <a href="#" aria-label="WhatsApp" class="w-10 h-10 rounded-full border border-oro/50 flex items-center justify-center hover:bg-oro hover:text-tinta transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20l1.300-4.200A8 8 0 1 1 8.200 18.800z"/></svg></a>
+        <a href="#" aria-label="TikTok" class="w-10 h-10 rounded-full border border-oro/50 flex items-center justify-center hover:bg-oro hover:text-tinta transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 3v11.500a3.500 3.500 0 1 1-3.500-3.500M14 3c.5 2.500 2 4 4.500 4"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-serif text-xl text-white mb-4">Horarios de atención</h3>
+      <ul class="text-sm space-y-2 text-crema/70"><li>Lunes a viernes: 9:00 a. m. – 7:00 p. m.</li><li>Sábados: 9:00 a. m. – 6:00 p. m.</li><li>Domingos: con cita previa</li></ul>
+    </div>
+    <div>
+      <h3 class="font-serif text-xl text-white mb-4">Ubicación</h3>
+      <p class="text-sm text-crema/70 leading-relaxed">Calle 10 #25-30, Local 4<br>Carepa, Colombia<br>(Cerca de la  Heladera)</p>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 mt-12 pt-6 border-t border-white/10 text-xs text-crema/50 text-center">
+    © <span id="year"></span> NoAn Beauty. Todos los derechos reservados.
+  </div>
+</footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
